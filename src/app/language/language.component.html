@@ -1,0 +1,12 @@
+<h1>CHANGE LANGUAGE</h1>
+<div>
+    語言：
+    <ng-select
+        [options]='languageOptions'
+        [placeholder]='defaultLanguage'
+        theme='default'
+        (selected)='onSelected($event)'>
+    </ng-select>
+</div>
+<div><h1>{{this.i18n.translate("title")}}</h1></div>
+<div>{{this.i18n.translate("number")}}</div>

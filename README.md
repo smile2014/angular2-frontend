@@ -1,4 +1,7 @@
 ## Library List
+### bootstrap
+. https://valor-software.com/ng2-bootstrap/#/
+
 ### angular2-select
 . https://github.com/basvandenberg/angular2-select
 

@@ -1,0 +1,49 @@
+<p-dataTable [value]="invoicesType" [rows]="5" [paginator]="true" [pageLinks]="3" [rowsPerPageOptions]="[5,10,20]">
+    <header>{{tableColumn.invoiceNumber}}</header>
+    <p-column [header]=tableColumn.startNumberTable>
+        <template let-invoice="rowData" pTemplate type="body">
+            <div style="text-align:center;" [ngSwitch]='status'>
+                <div *ngSwitchCase="'loading'">
+                    <i class="fa fa-spinner fa-pulse fa-1x fa-fw"></i>
+                    <span class="sr-only">Loading...</span>Loading...
+                </div>
+                <div *ngSwitchCase="'active'">
+                    {{invoice.startNumber}}
+                </div>
+            </div>
+        </template>
+    </p-column>
+    <p-column [header]=tableColumn.endNumberTable>
+        <template let-invoice="rowData" pTemplate type="body">
+            <div style="text-align:center;" [ngSwitch]='status'>
+                <div *ngSwitchCase="'loading'">
+                    <i class="fa fa-spinner fa-pulse fa-1x fa-fw"></i>
+                    <span class="sr-only">Loading...</span>Loading...
+                </div>
+                <div *ngSwitchCase="'active'">
+                    {{invoice.endNumber}}
+                </div>
+            </div>
+        </template>
+    </p-column>
+    <p-column [header]=tableColumn.invoiceAmount>
+        <template let-invoice="rowData" pTemplate type="body">
+            <div style="text-align:center;" [ngSwitch]='status'>
+                <div *ngSwitchCase="'loading'">
+                    <i class="fa fa-spinner fa-pulse fa-1x fa-fw"></i>
+                    <span class="sr-only">Loading...</span>Loading...
+                </div>
+                <div *ngSwitchCase="'active'">
+                    {{invoice.endNumber.substring(2, 10)-invoice.startNumber.substring(2, 10)+1}}
+                </div>
+            </div>
+        </template>
+    </p-column>
+    <p-column styleClass="col-button" [header]=tableColumn.deleteNumber>
+        <template let-invoice="rowData" pTemplate type="body">
+            <div style="text-align:center;">
+                <button type="button" pButton (click)="deleteInvoiceNumber(invoice)" icon="fa-close"></button>
+            </div>
+        </template>
+    </p-column>
+</p-dataTable>

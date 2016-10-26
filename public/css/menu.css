@@ -1,0 +1,80 @@
+/*start top-menu*/
+#top-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: #20202f;
+  z-index: 9;
+}
+
+#top-menu .login-logo {
+  float: right;
+}
+
+#top-menu .main-menu-logo {
+  float: left;
+}
+
+#top-menu img {
+  height: 50px;
+}
+
+/* line 60, ../sass/sb-admin-2.scss */
+#top-menu .navbar-top-links {
+  margin-right: 0;
+}
+/* line 62, ../sass/sb-admin-2.scss */
+#top-menu .navbar-top-links li {
+  display: inline-block;
+}
+/* line 64, ../sass/sb-admin-2.scss */
+#top-menu .navbar-top-links li:last-child {
+  margin-right: 15px;
+}
+/* line 67, ../sass/sb-admin-2.scss */
+#top-menu .navbar-top-links li a {
+  padding: 15px;
+  min-height: 50px;
+}
+/* line 72, ../sass/sb-admin-2.scss */
+#top-menu .navbar-top-links .dropdown-messages {
+  width: 310px;
+  min-width: 0;
+  margin-left: 5px;
+}
+/* line 77, ../sass/sb-admin-2.scss */
+#top-menu .navbar-top-links .dropdown-tasks {
+  width: 310px;
+  min-width: 0;
+  margin-left: -59px;
+}
+/* line 82, ../sass/sb-admin-2.scss */
+#top-menu .navbar-top-links .dropdown-alerts {
+  width: 310px;
+  min-width: 0;
+  margin-left: -123px;
+}
+/* line 87, ../sass/sb-admin-2.scss */
+#top-menu .navbar-top-links .dropdown-user {
+  right: 0;
+  left: auto;
+}
+/* line 91, ../sass/sb-admin-2.scss */
+#top-menu .navbar-top-links .dropdown-menu li {
+  display: block;
+}
+/* line 93, ../sass/sb-admin-2.scss */
+#top-menu .navbar-top-links .dropdown-menu li:last-child {
+  margin-right: 0;
+}
+/* line 96, ../sass/sb-admin-2.scss */
+#top-menu .navbar-top-links .dropdown-menu li a {
+  padding: 3px 20px;
+  min-height: 0;
+}
+/* line 99, ../sass/sb-admin-2.scss */
+#top-menu .navbar-top-links .dropdown-menu li a div {
+  white-space: normal;
+}
+/*end top-menu*/

@@ -1,0 +1,40 @@
+<div style="width:100%;clear:both;">
+    <div style="width:49%;float:left;">
+        {{this.i18n.translate("projectName")}}
+        <ng-select
+            [options]='projectOptions'
+            [placeholder]='projectName'
+            theme='default'
+            (selected)='onSelectedProject($event)'>
+        </ng-select>
+    </div>
+    <div style="width:49%;float:right;">
+        {{this.i18n.translate("language")}}
+        <ng-select
+            [options]='languageOptions'
+            [placeholder]='this.i18n.translate("textLanguage")'
+            theme='default'
+            (selected)='onSelectedLanguage($event)'>
+        </ng-select>
+    </div>
+</div>
+<hr>
+<div style="text-align:center;clear:both;">
+    <h3>{{this.i18n.translate("duplicateUniform")}}</h3>
+    <div><p>{{this.i18n.translate("startNumber")}}<input [(ngModel)]='invoiceDup.startNumber' /></p></div>
+    <div><p>{{this.i18n.translate("endNumber")}}<input [(ngModel)]='invoiceDup.endNumber' /></p></div>
+    <p><button (click)='updateInvoiceNumberDup()'>{{this.i18n.translate("updateNumber")}}</button></p>
+</div>
+<div style="margin:0px auto;width:90%;">
+    <invoice-table [invoicesType]="invoicesDup" [status]="statusDup" [tableColumn]="tableColumn"></invoice-table>
+</div>
+<div style="text-align:center;">
+    <h3>{{this.i18n.translate("triplicateUniform")}}</h3>
+    <div><p>{{this.i18n.translate("startNumber")}}<input [(ngModel)]='invoiceTri.startNumber' /></p></div>
+    <div><p>{{this.i18n.translate("endNumber")}}<input [(ngModel)]='invoiceTri.endNumber' /></p></div>
+    <p><button (click)='updateInvoiceNumberTri()'>{{this.i18n.translate("updateNumber")}}</button></p>
+</div>
+<div style="margin:0px auto;width:90%;">
+    <invoice-table [invoicesType]="invoicesTri" [status]="statusTri" [tableColumn]="tableColumn"></invoice-table>
+</div>
+<p></p>

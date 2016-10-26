@@ -1,0 +1,51 @@
+<div style="width:100%;clear:both;">
+    <div style="width:49%;float:left;">
+        {{i18n.translate("projectName")}}
+        <ng-select
+            [options]='projectOptions'
+            [placeholder]='projectName'
+            theme='default'
+            (selected)='onSelectedProject($event)'>
+        </ng-select>
+    </div>
+    <div style="width:49%;float:right;">
+        {{i18n.translate("language")}}
+        <ng-select
+            [options]='languageOptions'
+            [placeholder]='i18n.translate("textLanguage")'
+            theme='default'
+            (selected)='onSelectedLanguage($event)'>
+        </ng-select>
+    </div>
+</div>
+<hr>
+<div style="text-align:center;clear:both;">
+    <p></p>
+    <h3>{{i18n.translate("duplicateUniform")}}</h3>
+    <div [ngSwitch]='statusDup'>
+        <div *ngSwitchCase="'loading'">
+            <i class="fa fa-spinner fa-pulse fa-1x fa-fw"></i>
+            <span class="sr-only">Loading...</span>Loading...
+        </div>
+        <div *ngSwitchCase="'active'">
+            <div>{{i18n.translate("notificationPre")}}{{invoiceThresholdDupResp.hintThreshold}}{{i18n.translate("notificationPost")}}</div>
+            <div>{{i18n.translate("threshold")}}<input [(ngModel)]='invoiceThresholdDupPost.thresholdAmount' placeholder='{{invoiceThresholdDupResp.hintThreshold}}'/></div>
+        </div>
+    </div>
+    <p><button (click)='updateThresDup()'>{{i18n.translate("updateThreshold")}}</button></p>
+</div>
+
+<div style="text-align:center;">
+<h3>{{i18n.translate("triplicateUniform")}}</h3>
+    <div [ngSwitch]='statusTri'>
+        <div *ngSwitchCase="'loading'">
+            <i class="fa fa-spinner fa-pulse fa-1x fa-fw"></i>
+            <span class="sr-only">Loading...</span>Loading...
+        </div>
+        <div *ngSwitchCase="'active'">
+            <div>{{i18n.translate("notificationPre")}}{{invoiceThresholdTriResp.hintThreshold}}{{i18n.translate("notificationPost")}}</div>
+            <div>{{i18n.translate("threshold")}}<input [(ngModel)]='invoiceThresholdTriPost.thresholdAmount' placeholder='{{invoiceThresholdTriResp.hintThreshold}}'/></div>
+        </div>
+    </div>
+    <p><button (click)='updateThresTri()'>{{i18n.translate("updateThreshold")}}</button></p>
+</div>
