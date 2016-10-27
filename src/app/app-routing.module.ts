@@ -7,7 +7,7 @@ import { MainMenuListComponent } from './main-menu-list/main-menu-list.component
 
 export const routes: Routes = [
     {
-        path: 'dist',
+        path: 'a1',
         redirectTo: '/login',
         pathMatch: 'full'
     },

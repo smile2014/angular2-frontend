@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpModule, JsonpModule } from '@angular/http';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -67,6 +68,7 @@ import { InputTextModule, DataTableModule, ButtonModule, SharedModule } from 'pr
   ],
   providers: [
     ApiService,
+    [{provide: LocationStrategy, useClass: HashLocationStrategy}],
     I18nService,
     MenuList
   ],
