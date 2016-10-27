@@ -4,9 +4,6 @@ import { I18nService } from "./util/i18n.service";
 
 import { language, i18n } from './util/language';
 
-// require('style-loader!css-loader!font-awesome/css/font-awesome.min.css?');
-// require('style-loader!css-loader!font-awesome/css/font-awesome.css?');
-
 @Component({
   selector: 'my-app',
   templateUrl: './app.component.html',

@@ -1,0 +1,33 @@
+<div id="top-menu">
+	<div class="title">
+		<img src="http://localhost/angular2-frontend/base/acer-white.png">
+	</div>
+
+	<div id="mobile-main-menu" (click)="toggle()">
+		<img src="http://localhost/angular2-frontend/base/menu-left.svg" alt="">
+	</div>
+	<div>
+		<user-menu></user-menu>
+	</div>
+</div>
+<div id="main-menu">
+	<div class="main-menu-container">
+		<!--<div class="menu-content" *ngIf="routes && routes.length">
+			<div class="section">
+			</div>
+			<div class="section" *ngFor="let route of routes" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">
+				<a [routerLink]="[route.path]">
+					<h3>{{route.path}}</h3>
+				</a>
+			</div>
+		</div>-->
+		<div class="menu-content">
+			<div class="section" *ngFor="let menu of menuList">
+				<h3>{{menu}}</h3>
+			</div>
+		</div>
+	</div>
+</div>
+<div id="main">
+	<h1>test</h1>
+</div>

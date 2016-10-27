@@ -37,6 +37,27 @@ module.exports = {
         test: /\.css$/,
         include: helpers.root('src', 'app'),
         loader: 'raw'
+      },
+      {
+        test: /\.(sass|scss)$/,
+        loaders: ['css-to-string-loader', 'css-loader?sourceMap', 'resolve-url', 'sass-loader?sourceMap']
+      },
+      {
+        test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+        loader: "url?limit=10000&minetype=application/font-woff"
+      },
+      {
+        test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+        loader: "file"
+      },
+      {
+        test: /\.(sass|scss)$/,
+        loaders: ['css-to-string-loader', 'css-loader?sourceMap', 'resolve-url', 'sass-loader?sourceMap']
+      },
+      {
+        test: /\.scss$/,
+        exclude: /node_modules/,
+        loaders: ['raw-loader', 'sass-loader']
       }
     ]
   },
