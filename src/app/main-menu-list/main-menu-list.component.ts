@@ -1,28 +1,39 @@
-import { AfterViewInit, Component, Renderer, Input } from '@angular/core';
+import { AfterViewInit, Component, Renderer, Input, OnInit, ViewChild } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
+import { FormControl, FormGroup } from '@angular/forms';
+
+import { ExcelOptions } from '../util/excel-options';
+import { Global } from '../util/global';
 
 import '../../../public/css/styles.css';
 import '../../../public/css/menu.css';
-
-import globals = require('../util/global-value');
 
 @Component({
     selector: 'main-menu-list',
     templateUrl: './main-menu-list.component.html',
     styleUrls: ['./main-menu-list.component.css']
 })
-export class MainMenuListComponent{
+export class MainMenuListComponent implements OnInit {
 
     public isShown: boolean = false;
 
     private renderer: Renderer;
     private document: any;
 
+    form: FormGroup;
+    // @ViewChild('preMultiple') preMultiple;
+
+    projectName: string = '條件';
+    basicInformation = ExcelOptions.basicInformation;
+    abilityExam = ExcelOptions.abilityExam;
+    appointExam = ExcelOptions.appointExam;
+
     // public routes: any = routes;
     // public search: any = {};
     // public hash: string = '';
 
-    menuList: string[] = globals.menuList;
+    menuList: string[] = Global.menuList;
+    identity: string = Global.identity;
 
     public constructor(renderer: Renderer, private router: Router) {
         this.renderer = renderer;
@@ -36,6 +47,11 @@ export class MainMenuListComponent{
         //         this.hash = event.url;
         //     }
         // });
+    }
+
+    ngOnInit() {
+        this.form = new FormGroup({});
+        this.form.addControl('selectMultiple', new FormControl(''));
     }
 
     public ngAfterViewInit(): any {
@@ -56,5 +72,32 @@ export class MainMenuListComponent{
             }
         }
     }
-    
+
+    onMultipleSelected(option: any) {
+        console.log('Selected:');
+        console.log(option);
+        // this.logMultiple('- selected (value: ' + item.value + ', label:' +
+        //     item.label + ')');
+    }
+
+    onMultipleDeselected(option: any) {
+        console.log('Deselected:');
+        console.log(option);
+        // this.logMultiple('- deselected (value: ' + item.value + ', label:' +
+        //     item.label + ')');
+    }
+
+    // private logMultiple(msg: string) {
+    //     this.logMultipleString += msg + '\n';
+
+    //     // Let change detection do its work before scrolling to div bottom.
+    //     setTimeout(() => {
+    //         this.scrollToBottom(this.preMultiple.nativeElement);
+    //     });
+    // }
+
+    // private scrollToBottom(elem) {
+    //     elem.scrollTop = elem.scrollHeight;
+    // }
+
 }

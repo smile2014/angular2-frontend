@@ -29,5 +29,41 @@
 	</div>
 </div>
 <div id="main">
-	<h1>test</h1>
+	<h1>{{identity}}</h1>
+	<div style="width:50%;float:left;clear:both;">
+        學生基本資料:
+        <ng-select
+            [options]='basicInformation'
+            [placeholder]='projectName'
+			[multiple]=true
+			
+            theme='default'
+            (selected)="onMultipleSelected($event)"
+        	(deselected)="onMultipleDeselected($event)">
+        </ng-select>
+    </div>
+	<div style="width:50%;float:left;clear:both;">
+        指考成績:
+        <ng-select
+            [options]='appointExam'
+            [placeholder]='projectName'
+			[multiple]=true
+			
+            theme='default'
+            (selected)="onMultipleSelected($event)"
+        	(deselected)="onMultipleDeselected($event)">
+        </ng-select>
+    </div>
+	<div style="width:50%;float:left;clear:both;">
+        學測成績:
+        <ng-select
+            [options]='abilityExam'
+            [placeholder]='projectName'
+			[multiple]=true
+			
+            theme='default'
+            (selected)="onMultipleSelected($event)"
+        	(deselected)="onMultipleDeselected($event)">
+        </ng-select>
+    </div>
 </div>
