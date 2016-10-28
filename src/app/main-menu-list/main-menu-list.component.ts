@@ -54,6 +54,7 @@ export class MainMenuListComponent implements OnInit {
         this.form = new FormGroup({});
         this.form.addControl('selectMultiple', new FormControl(''));
         this.commonCheck.isLogin('Common Check');
+        setTimeout(console.log('2222'),5000);
     }
 
     public ngAfterViewInit(): any {

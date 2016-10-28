@@ -10,6 +10,9 @@ import { language, i18n } from './util/language';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+
+  
+
   i18n: I18nService = new I18nService();
   ngOnInit(): void {
     console.log("app init");

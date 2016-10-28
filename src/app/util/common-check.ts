@@ -9,6 +9,6 @@ export class CommonCheck {
     isLogin(language: string): void {
         console.log(language);
         this.userLanguage = language;
+        //call api
     }
-
 }

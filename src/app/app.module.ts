@@ -23,9 +23,11 @@ import { ApiService } from './util/api-service.provider';
 import { I18nService } from './util/i18n.service';
 import { MenuList } from './util/common.vo';
 import { CommonCheck } from './util/common-check';
+import { CommonCheckComponent } from './common-check-component/common-check-component';
 
 //bootstrap
 import { DropdownModule } from 'ng2-bootstrap/ng2-bootstrap';
+import { ModalModule } from 'ng2-bootstrap/ng2-bootstrap';
 
 //select lib
 import { SelectModule } from 'angular2-select';
@@ -45,11 +47,12 @@ import { InputTextModule, DataTableModule, ButtonModule, SharedModule } from 'pr
 
     //bootstrap
     DropdownModule,
+    ModalModule,
 
     //select
     SelectModule,
 
-    //prieng
+    //primeng
     InputTextModule,
     DataTableModule,
     ButtonModule,
@@ -65,7 +68,8 @@ import { InputTextModule, DataTableModule, ButtonModule, SharedModule } from 'pr
     LoginComponent,
     MainMenuComponent,
     MainMenuListComponent,
-    UserMenuComponent
+    UserMenuComponent,
+    CommonCheckComponent
   ],
   providers: [
     ApiService,
