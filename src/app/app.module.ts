@@ -22,6 +22,7 @@ import { UserMenuComponent } from './user-menu/user-menu.component';
 import { ApiService } from './util/api-service.provider';
 import { I18nService } from './util/i18n.service';
 import { MenuList } from './util/common.vo';
+import { CommonCheck } from './util/common-check';
 
 //bootstrap
 import { DropdownModule } from 'ng2-bootstrap/ng2-bootstrap';
@@ -70,7 +71,8 @@ import { InputTextModule, DataTableModule, ButtonModule, SharedModule } from 'pr
     ApiService,
     [{provide: LocationStrategy, useClass: HashLocationStrategy}],
     I18nService,
-    MenuList
+    MenuList,
+    CommonCheck
   ],
   bootstrap: [
     AppComponent

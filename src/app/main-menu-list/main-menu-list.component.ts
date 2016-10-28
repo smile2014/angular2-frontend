@@ -5,6 +5,8 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { ExcelOptions } from '../util/excel-options';
 import { Global } from '../util/global';
 
+import { CommonCheck } from "../util/common-check";
+
 import '../../../public/css/excel-options.css';
 import '../../../public/css/menu.css';
 
@@ -17,7 +19,6 @@ export class MainMenuListComponent implements OnInit {
 
     public isShown: boolean = false;
 
-    private renderer: Renderer;
     private document: any;
 
     function: string = '';
@@ -34,9 +35,10 @@ export class MainMenuListComponent implements OnInit {
     menuList: string[] = Global.menuList;
     identity: string = Global.identity;
 
-    public constructor(renderer: Renderer, private router: Router) {
+    public constructor(private renderer: Renderer, private router: Router, private commonCheck: CommonCheck) {
         this.renderer = renderer;
         this.document = document;
+
 
         // console.log('routes:');
         // console.log(this.routes);
@@ -51,6 +53,7 @@ export class MainMenuListComponent implements OnInit {
     ngOnInit() {
         this.form = new FormGroup({});
         this.form.addControl('selectMultiple', new FormControl(''));
+        this.commonCheck.isLogin('Common Check');
     }
 
     public ngAfterViewInit(): any {
