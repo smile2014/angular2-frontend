@@ -78,7 +78,7 @@ export class MainMenuListComponent implements OnInit {
     }
 
     onMultipleSelected() {
-        console.log('Selected');
+        console.log('Multiple Selected');
         // this.logMultiple('- selected (value: ' + item.value + ', label:' +
         //     item.label + ')');
     }
