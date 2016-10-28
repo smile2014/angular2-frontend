@@ -23,47 +23,29 @@
 		</div>-->
 		<div class="menu-content">
 			<div class="section" *ngFor="let menu of menuList">
-				<h3>{{menu}}</h3>
+				<h3 (click)="onMenuListSelected(menu)">{{menu}}</h3>
 			</div>
 		</div>
 	</div>
 </div>
 <div id="main">
-	<h1>{{identity}}</h1>
-	<div style="width:50%;float:left;clear:both;">
-        學生基本資料:
-        <ng-select
-            [options]='basicInformation'
-            [placeholder]='projectName'
-			[multiple]=true
-			
-            theme='default'
-            (selected)="onMultipleSelected($event)"
-        	(deselected)="onMultipleDeselected($event)">
-        </ng-select>
-    </div>
-	<div style="width:50%;float:left;clear:both;">
-        指考成績:
-        <ng-select
-            [options]='appointExam'
-            [placeholder]='projectName'
-			[multiple]=true
-			
-            theme='default'
-            (selected)="onMultipleSelected($event)"
-        	(deselected)="onMultipleDeselected($event)">
-        </ng-select>
-    </div>
-	<div style="width:50%;float:left;clear:both;">
-        學測成績:
-        <ng-select
-            [options]='abilityExam'
-            [placeholder]='projectName'
-			[multiple]=true
-			
-            theme='default'
-            (selected)="onMultipleSelected($event)"
-        	(deselected)="onMultipleDeselected($event)">
-        </ng-select>
-    </div>
+	<div class="main-content">
+		<h1>{{identity}}:{{function}}</h1>
+		<h2>學生基本資料</h2>
+		<div style="width:50%;float:left;clear:both;" *ngFor="let menuList of basicInformation">
+			<h3>{{menuList.label}}</h3>
+			<ng-select
+				[options]='menuList.option'
+				[placeholder]='projectName'
+				[multiple]=true
+				theme='default'
+				(selected)="onMultipleSelected($event)"
+				(deselected)="onMultipleDeselected($event)">
+			</ng-select>
+		</div>
+		<hr>
+		<div style="float:left;clear:both;">
+			<h3>已選擇條件: </h3>
+		</div>
+	</div>
 </div>

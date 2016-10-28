@@ -9,6 +9,8 @@ import { i18n } from '../util/language';
 import { I18nService } from "../util/i18n.service";
 import { InvoiceTable } from './invoice-table.component';
 
+import '../../../public/css/menu.css';
+
 @Component({
   selector: 'app-invoice-number',
   templateUrl: './invoice-number.component.html',

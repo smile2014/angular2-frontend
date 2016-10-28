@@ -5,7 +5,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { ExcelOptions } from '../util/excel-options';
 import { Global } from '../util/global';
 
-import '../../../public/css/styles.css';
+import '../../../public/css/excel-options.css';
 import '../../../public/css/menu.css';
 
 @Component({
@@ -20,14 +20,13 @@ export class MainMenuListComponent implements OnInit {
     private renderer: Renderer;
     private document: any;
 
+    function: string = '';
+
     form: FormGroup;
     // @ViewChild('preMultiple') preMultiple;
 
     projectName: string = '條件';
     basicInformation = ExcelOptions.basicInformation;
-    abilityExam = ExcelOptions.abilityExam;
-    appointExam = ExcelOptions.appointExam;
-
     // public routes: any = routes;
     // public search: any = {};
     // public hash: string = '';
@@ -73,9 +72,13 @@ export class MainMenuListComponent implements OnInit {
         }
     }
 
-    onMultipleSelected(option: any) {
-        console.log('Selected:');
-        console.log(option);
+    onMenuListSelected(option: any) {
+        console.log('Selected:' + option);
+        this.function = option;
+    }
+
+    onMultipleSelected() {
+        console.log('Selected');
         // this.logMultiple('- selected (value: ' + item.value + ', label:' +
         //     item.label + ')');
     }

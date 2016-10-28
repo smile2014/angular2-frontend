@@ -4,6 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { MainMenuComponent } from './main-menu/main-menu.component';
 import { MainMenuListComponent } from './main-menu-list/main-menu-list.component';
+import { InvoiceNumberComponent } from './invoice-number/invoice-number.component';
 
 export const routes: Routes = [
     {
@@ -27,6 +28,10 @@ export const routes: Routes = [
     {
         path: 'main-menu-list',
         component: MainMenuListComponent
+    },
+    {
+        path: 'invoice-number',
+        component: InvoiceNumberComponent
     }
 ];
 

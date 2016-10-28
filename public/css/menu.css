@@ -249,6 +249,11 @@
   float: right;
   margin-top: 50px;
 }
+
+#main .main-content {
+  margin : 5px;
+  margin-bottom: 100px;
+}
 /*end main*/
 
 @media (max-width: 1024px) {
