@@ -39,13 +39,22 @@
 				[placeholder]='projectName'
 				[multiple]=true
 				theme='default'
-				(selected)="onMultipleSelected($event)"
-				(deselected)="onMultipleDeselected($event)">
+				(selected)="onMultipleSelected($event, menuList)"
+				(deselected)="onMultipleDeselected($event, menuList)">
 			</ng-select>
+		</div>
+		<div style="float:left;clear:both;">
+			<h3>已選擇條件:</h3>
+			<!--<div *ngFor="let table of showCharts">{{table}}</div>-->
 		</div>
 		<hr>
 		<div style="float:left;clear:both;">
-			<h3>已選擇條件: </h3>
+			<p-selectButton [options]="types" [(ngModel)]="selectedType" (click)="onSelectedChart(selectedType)"></p-selectButton>
+			<!--<p>Selected Type: {{selectedType}}</p>-->
 		</div>
+		<div style="float:left;clear:both;" *ngIf="barChart"><div *ngFor="let chart of showCharts"><bar-chart [chartTitle] = "chart"></bar-chart></div></div>
+		<div style="float:left;clear:both;" *ngIf="doughnutChart"><div *ngFor="let chart of showCharts"><doughnut-chart [chartTitle] = "chart"></doughnut-chart></div></div>
+		<div style="float:left;clear:both;" *ngIf="lineChart"><div *ngFor="let chart of showCharts"><line-chart [chartTitle] = "chart"></line-chart></div></div>
+		<hr>
 	</div>
 </div>

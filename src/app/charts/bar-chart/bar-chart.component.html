@@ -1,0 +1,15 @@
+<div>
+  <h3>{{chartTitle}}</h3>
+  <div style="display: block">
+    <canvas baseChart width="600" height="400"
+        [datasets]="barChartData"
+        [labels]="barChartLabels"
+        [options]="barChartOptions"
+        [legend]="barChartLegend"
+        [chartType]="barChartType"
+        (chartHover)="chartHovered($event)"
+        (chartClick)="chartClicked($event)">
+    </canvas>
+  </div>
+  <!--<button (click)="randomize()">Update</button>-->
+</div>

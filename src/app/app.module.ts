@@ -25,7 +25,7 @@ import { MenuList } from './util/common.vo';
 import { CommonCheck } from './util/common-check';
 import { CommonCheckComponent } from './common-check-component/common-check-component';
 
-//bootstrap
+//bootstrap lib
 import { DropdownModule } from 'ng2-bootstrap/ng2-bootstrap';
 import { ModalModule } from 'ng2-bootstrap/ng2-bootstrap';
 
@@ -33,8 +33,18 @@ import { ModalModule } from 'ng2-bootstrap/ng2-bootstrap';
 import { SelectModule } from 'angular2-select';
 
 //primeng lib
-import { InputTextModule, DataTableModule, ButtonModule, SharedModule } from 'primeng/primeng';
+import { InputTextModule } from 'primeng/primeng';
+import { DataTableModule } from 'primeng/primeng';
+import { ButtonModule } from 'primeng/primeng';
+import { SharedModule } from 'primeng/primeng';
+import { SelectButtonModule } from 'primeng/primeng';
 
+//Charts lib
+import { ChartsModule } from 'ng2-charts/ng2-charts';
+//Charts declarations
+import { LineChartComponent } from './charts/line-chart/line-chart.component';
+import { BarChartComponent } from './charts/bar-chart/bar-chart.component';
+import { DoughnutChartComponent } from './charts/doughnut-chart/doughnut-chart.component';
 
 
 @NgModule({
@@ -56,7 +66,11 @@ import { InputTextModule, DataTableModule, ButtonModule, SharedModule } from 'pr
     InputTextModule,
     DataTableModule,
     ButtonModule,
-    SharedModule
+    SharedModule,
+    SelectButtonModule,
+
+    //Charts
+    ChartsModule
   ],
   declarations: [
     AppComponent,
@@ -69,11 +83,16 @@ import { InputTextModule, DataTableModule, ButtonModule, SharedModule } from 'pr
     MainMenuComponent,
     MainMenuListComponent,
     UserMenuComponent,
-    CommonCheckComponent
+    CommonCheckComponent,
+
+    //Charts
+    LineChartComponent,
+    BarChartComponent,
+    DoughnutChartComponent
   ],
   providers: [
     ApiService,
-    [{provide: LocationStrategy, useClass: HashLocationStrategy}],
+    [{ provide: LocationStrategy, useClass: HashLocationStrategy }],
     I18nService,
     MenuList,
     CommonCheck

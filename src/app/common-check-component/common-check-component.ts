@@ -16,9 +16,7 @@ export class CommonCheckComponent implements OnInit {
     @ViewChild('childModal') public childModal: ModalDirective;
 
     ngOnInit() {
-        console.log('111111111111111');
-        //isLogin();
-
+        console.log('common check init');
         setTimeout(() => { this.childModal.show()}, 5000);
     }
 

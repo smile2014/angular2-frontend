@@ -242,6 +242,7 @@
 
 /*start main*/
 #main {
+  height: calc(100% + 50px);
   background-color:#FFFFFF;
   position:absolute;
   left: 270px;
@@ -251,8 +252,8 @@
 }
 
 #main .main-content {
+  height: calc(100% + 50px);
   margin : 5px;
-  margin-bottom: 100px;
 }
 /*end main*/
 

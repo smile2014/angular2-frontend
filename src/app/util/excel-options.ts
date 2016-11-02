@@ -1,4 +1,4 @@
-export const ExcelOptions = {
+export var ExcelOptions = {
     basicInformation: [
         {
             label: '性別',
@@ -165,7 +165,7 @@ export const ExcelOptions = {
         },
         {
             label: '國籍',
-            value: 'residence',
+            value: 'country',
             option: [
                 {
                     value: '國籍:台灣',
@@ -190,4 +190,57 @@ export const ExcelOptions = {
             ]
         }
     ]
+}
+
+export var BasicInformation = {
+    gender: {
+        male: '男',
+        female: '女'
+    },
+    residence: {
+        Taipei: '台北',
+        NewTaipei: '新北市',
+        Taoyuan: '桃園',
+        Hsinchu: '新竹',
+        Miaoli: '苗栗',
+        Taichung: '台中',
+        Changhua: '彰化',
+        Yunlin: '雲林',
+        Chiayi: '嘉義',
+        Tainan: '台南',
+        Kaohsiung: '高雄',
+        Pingtung: '屏東'
+    },
+    admission: {
+        AbilityExam: '學測',
+        AppointExam: '指考',
+        Recommendation: '推薦甄試',
+        MultiStar: '繁星計畫',
+        Applications: '個人申請'
+    },
+    admissionIdentity: {
+        Normal: '一般生',
+        Overseas: '僑生',
+        Aboriginal: '原住民',
+        Disability: '身心障礙'
+    },
+    admissionYear: {
+        NinetySix: '96',
+        NinetySeven: '97',
+        NinetyEight: '98',
+        NinetyNine: '99',
+        OneHundred: '100',
+        OneHundredOne: '101',
+        OneHundredTwo: '102',
+        OneHundredThree: '103',
+        OneHundredFour: '104',
+        OneHundredFive: '105',
+    },
+    country: {
+        Taiwan: '台灣',
+        Japan: '日本',
+        Malaysia: '馬來西亞',
+        Singapore: '新加坡',
+        Korea: '韓國'
+    }
 }

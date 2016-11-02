@@ -1,10 +1,10 @@
-import { AfterViewInit, Component, Renderer, Input, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, Renderer, Input, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
-import { FormControl, FormGroup } from '@angular/forms';
 
-import { ExcelOptions } from '../util/excel-options';
+import { SelectItem } from 'primeng/primeng';
+
+import { ExcelOptions, BasicInformation } from '../util/excel-options';
 import { Global } from '../util/global';
-
 import { CommonCheck } from "../util/common-check";
 
 import '../../../public/css/excel-options.css';
@@ -23,8 +23,19 @@ export class MainMenuListComponent implements OnInit {
 
     function: string = '';
 
-    form: FormGroup;
-    // @ViewChild('preMultiple') preMultiple;
+    showCharts: any[] = [];
+    selectTable: string[] = [];
+    newTable: string = '';
+    delTable: string = '';
+    cloumn: string[][] = [];
+
+    // a:array[]
+
+    types: SelectItem[];
+    selectedType: string;
+    barChart: boolean = false;
+    doughnutChart: boolean = false;
+    lineChart: boolean = false;
 
     projectName: string = '條件';
     basicInformation = ExcelOptions.basicInformation;
@@ -39,7 +50,10 @@ export class MainMenuListComponent implements OnInit {
         this.renderer = renderer;
         this.document = document;
 
-
+        this.types = [];
+        this.types.push({ label: '柱狀圖', value: 'BarChart' });
+        this.types.push({ label: '圓餅圖', value: 'DoughnutChart' });
+        this.types.push({ label: '曲線圖', value: 'LineChart' });
         // console.log('routes:');
         // console.log(this.routes);
         // this.routes = this.routes.filter((v: any) => v.path !== '**');
@@ -51,10 +65,6 @@ export class MainMenuListComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.form = new FormGroup({});
-        this.form.addControl('selectMultiple', new FormControl(''));
-        this.commonCheck.isLogin('Common Check');
-        setTimeout(console.log('2222'),5000);
     }
 
     public ngAfterViewInit(): any {
@@ -79,32 +89,73 @@ export class MainMenuListComponent implements OnInit {
     onMenuListSelected(option: any) {
         console.log('Selected:' + option);
         this.function = option;
+        console.log('Show Charts:');
+        console.log(this.showCharts);
     }
 
-    onMultipleSelected() {
-        console.log('Multiple Selected');
-        // this.logMultiple('- selected (value: ' + item.value + ', label:' +
-        //     item.label + ')');
+    onMultipleSelected(option: any, table: any) {
+        console.log('Multiple Selected: ' + table.value);
+        // console.log(table);
+        // console.log(option);
+        // console.log(BasicInformation[table.value]);
+        this.newTable = table.value;
+        this.addShowCharts();
+        // this.showCharts.push(table.value);
     }
 
-    onMultipleDeselected(option: any) {
-        console.log('Deselected:');
-        console.log(option);
-        // this.logMultiple('- deselected (value: ' + item.value + ', label:' +
-        //     item.label + ')');
+    onMultipleDeselected(option: any, table: any) {
+        console.log('Multiple Deselected:' + table.value);
+        // console.log(table);
+        // console.log(option);
+        // console.log(BasicInformation[table.value]);
+        this.delTable = table.value;
+        this.delShowCharts();
+        // this.charts.splice(this.charts.indexOf(label), 1);
     }
 
-    // private logMultiple(msg: string) {
-    //     this.logMultipleString += msg + '\n';
+    onSelectedChart(option: any) {
+        console.log('Selected Chart:' + option);
+        if (option === 'BarChart') {
+            this.barChart = true;
+            this.doughnutChart = false;
+            this.lineChart = false;
+        }
+        if (option === 'DoughnutChart') {
+            this.barChart = false;
+            this.doughnutChart = true;
+            this.lineChart = false;
+        }
+        if (option === 'LineChart') {
+            this.barChart = false;
+            this.doughnutChart = false;
+            this.lineChart = true;
+        }
+    }
 
-    //     // Let change detection do its work before scrolling to div bottom.
-    //     setTimeout(() => {
-    //         this.scrollToBottom(this.preMultiple.nativeElement);
-    //     });
-    // }
+    addShowCharts() {
+        this.selectTable.push(this.newTable);
+        this.updateShowCharts();
+    }
 
-    // private scrollToBottom(elem) {
-    //     elem.scrollTop = elem.scrollHeight;
-    // }
+    delShowCharts() {
+        this.selectTable.splice(this.selectTable.indexOf(this.delTable), 1);
+        this.showCharts.splice(this.showCharts.indexOf(this.delTable), 1);
+        this.updateShowCharts();
+    }
 
+    updateShowCharts() {
+        var ifAddTable: boolean = true;
+        for (var addTable of this.selectTable) {
+            for (var existTable of this.showCharts) {
+                if (addTable === existTable) {
+                    ifAddTable = false;
+                    break;
+                }
+                ifAddTable = true;
+            }
+            if(ifAddTable){
+                this.showCharts.push(addTable);
+            }
+        }
+    }
 }
