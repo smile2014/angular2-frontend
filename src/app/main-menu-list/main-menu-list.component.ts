@@ -3,9 +3,10 @@ import { NavigationEnd, Router } from '@angular/router';
 
 import { SelectItem } from 'primeng/primeng';
 
-import { ExcelOptions, BasicInformation } from '../util/excel-options';
+import { BasicInformation } from '../util/excel-options';
 import { Global } from '../util/global';
 import { CommonCheck } from "../util/common-check";
+import { SelectOption } from "../util/common.vo";
 
 import '../../../public/css/excel-options.css';
 import '../../../public/css/menu.css';
@@ -21,16 +22,16 @@ export class MainMenuListComponent implements OnInit {
 
     private document: any;
 
+    //test for main-menu
     function: string = '';
 
-    showCharts: any[] = [];
-    selectTable: string[] = [];
-    newTable: string = '';
-    delTable: string = '';
-    cloumn: string[][] = [];
+    showCharts: string[] = [];
+    selectColumn: string[] = [];
+    newColumn: string = '';
+    delColumn: string = '';
+    allTable: string[] = [];
 
-    // a:array[]
-
+    //button for choose charts
     types: SelectItem[];
     selectedType: string;
     barChart: boolean = false;
@@ -38,7 +39,7 @@ export class MainMenuListComponent implements OnInit {
     lineChart: boolean = false;
 
     projectName: string = '條件';
-    basicInformation = ExcelOptions.basicInformation;
+    basicInformation = BasicInformation;
     // public routes: any = routes;
     // public search: any = {};
     // public hash: string = '';
@@ -65,6 +66,7 @@ export class MainMenuListComponent implements OnInit {
     }
 
     ngOnInit() {
+        this.allTable.push("BasicInformation");
     }
 
     public ngAfterViewInit(): any {
@@ -77,7 +79,7 @@ export class MainMenuListComponent implements OnInit {
 
     public toggle(isShown?: boolean): void {
         this.isShown = typeof isShown === 'undefined' ? !this.isShown : isShown;
-        console.log("main-menu click");
+        // console.log("main-menu click");
         if (this.document && this.document.body) {
             this.renderer.setElementClass(this.document.body, 'isOpenMenu', this.isShown);
             if (this.isShown === false) {
@@ -89,28 +91,40 @@ export class MainMenuListComponent implements OnInit {
     onMenuListSelected(option: any) {
         console.log('Selected:' + option);
         this.function = option;
-        console.log('Show Charts:');
-        console.log(this.showCharts);
+        console.log('Show Charts:' + this.showCharts);
+        // console.log(BasicInformation);
+        // for (var column in BasicInformation) {
+        //     console.log(column + ":");
+        //     for (var value in BasicInformation[column]) {
+        //         console.log(value + ":" + BasicInformation[column][value]);
+        //     }
+        // }
     }
 
-    onMultipleSelected(option: any, table: any) {
-        console.log('Multiple Selected: ' + table.value);
+    createSelectOption(column: any): any[] {
+        let selectOption: SelectOption[] = [];
+        for (var selectValue in BasicInformation[column]) {
+            selectOption.push({ label: BasicInformation[column][selectValue], value: column + ':' + BasicInformation[column][selectValue] });
+        }
+        return selectOption;
+    }
+
+    onMultipleSelected(option: any, column: any) {
+        console.log('Multiple Selected: ' + column);
         // console.log(table);
         // console.log(option);
         // console.log(BasicInformation[table.value]);
-        this.newTable = table.value;
+        this.newColumn = column;
         this.addShowCharts();
-        // this.showCharts.push(table.value);
     }
 
-    onMultipleDeselected(option: any, table: any) {
-        console.log('Multiple Deselected:' + table.value);
+    onMultipleDeselected(option: any, column: any) {
+        console.log('Multiple Deselected:' + column);
         // console.log(table);
         // console.log(option);
         // console.log(BasicInformation[table.value]);
-        this.delTable = table.value;
+        this.delColumn = column;
         this.delShowCharts();
-        // this.charts.splice(this.charts.indexOf(label), 1);
     }
 
     onSelectedChart(option: any) {
@@ -133,28 +147,28 @@ export class MainMenuListComponent implements OnInit {
     }
 
     addShowCharts() {
-        this.selectTable.push(this.newTable);
+        this.selectColumn.push(this.newColumn);
         this.updateShowCharts();
     }
 
     delShowCharts() {
-        this.selectTable.splice(this.selectTable.indexOf(this.delTable), 1);
-        this.showCharts.splice(this.showCharts.indexOf(this.delTable), 1);
+        this.selectColumn.splice(this.selectColumn.indexOf(this.delColumn), 1);
+        this.showCharts.splice(this.showCharts.indexOf(this.delColumn), 1);
         this.updateShowCharts();
     }
 
     updateShowCharts() {
-        var ifAddTable: boolean = true;
-        for (var addTable of this.selectTable) {
-            for (var existTable of this.showCharts) {
-                if (addTable === existTable) {
-                    ifAddTable = false;
+        var ifAddColumn: boolean = true;
+        for (var addColumn of this.selectColumn) {
+            for (var existColumn of this.showCharts) {
+                if (addColumn === existColumn) {
+                    ifAddColumn = false;
                     break;
                 }
-                ifAddTable = true;
+                ifAddColumn = true;
             }
-            if(ifAddTable){
-                this.showCharts.push(addTable);
+            if (ifAddColumn) {
+                this.showCharts.push(addColumn);
             }
         }
     }

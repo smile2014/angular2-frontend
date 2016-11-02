@@ -31,20 +31,22 @@
 <div id="main">
 	<div class="main-content">
 		<h1>{{identity}}:{{function}}</h1>
-		<h2>學生基本資料</h2>
-		<div style="width:50%;float:left;clear:both;" *ngFor="let menuList of basicInformation">
-			<h3>{{menuList.label}}</h3>
-			<ng-select
-				[options]='menuList.option'
-				[placeholder]='projectName'
-				[multiple]=true
-				theme='default'
-				(selected)="onMultipleSelected($event, menuList)"
-				(deselected)="onMultipleDeselected($event, menuList)">
-			</ng-select>
+		<div *ngFor="let table of allTable">
+			<h2>{{table}}</h2>
+			<div style="width:50%;float:left;clear:both;" *ngFor="let column of basicInformation | keys">
+				<h3>{{column}}</h3>
+				<ng-select
+					[options]='createSelectOption(column)'
+					[placeholder]='projectName'
+					[multiple]=true
+					theme='default'
+					(selected)="onMultipleSelected($event, column)"
+					(deselected)="onMultipleDeselected($event, column)">
+				</ng-select>
+			</div>
 		</div>
 		<div style="float:left;clear:both;">
-			<h3>已選擇條件:</h3>
+			<h3>已選擇條件:{{selectColumn}}</h3>
 			<!--<div *ngFor="let table of showCharts">{{table}}</div>-->
 		</div>
 		<hr>
