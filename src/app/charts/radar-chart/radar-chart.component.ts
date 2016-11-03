@@ -3,38 +3,40 @@ import { Component, Input, OnInit } from '@angular/core';
 import { BasicInformation } from '../../util/excel-options';
 
 @Component({
-    selector: 'doughnut-chart',
-    templateUrl: './doughnut-chart.component.html',
-    styleUrls: ['./doughnut-chart.component.css']
+    selector: 'radar-chart',
+    templateUrl: './radar-chart.component.html',
+    styleUrls: ['./radar-chart.component.css']
 })
-export class DoughnutChartComponent implements OnInit {
+export class RadarChartComponent implements OnInit{
     @Input()
     chartTitle: string;
     @Input()
     filter: any;
 
     filterString: string = '';
+    // Radar
+    public radarChartLabels: string[] = [];
 
-    // Doughnut
-    public doughnutChartLabels: string[] = [];
-    public doughnutChartData: number[] = [];
-    public doughnutChartType: string = 'doughnut';
+    public radarChartData: any = [];
+    public radarChartType: string = 'radar';
 
     // events
     public chartClicked(e: any): void {
-        // console.log(e);
+        console.log(e);
     }
 
     public chartHovered(e: any): void {
-        // console.log(e);
+        console.log(e);
     }
 
     ngOnInit() {
         console.log(this.filter);
+        var data: any[] = [];
         for (var label in BasicInformation[this.chartTitle]) {
-            this.doughnutChartLabels.push(BasicInformation[this.chartTitle][label]);
-            this.doughnutChartData.push(Math.floor(Math.random() * 100 + 1));
+            data.push(Math.floor(Math.random() * 100 + 1));
+            this.radarChartLabels.push(BasicInformation[this.chartTitle][label]);
         }
+        this.radarChartData.push({ data: data, label: '人數' });
         for (var column in this.filter) {
             if (column != this.chartTitle) {
                 this.filterString = this.filterString + " " + column + ":";

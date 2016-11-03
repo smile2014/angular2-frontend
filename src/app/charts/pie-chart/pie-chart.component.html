@@ -1,0 +1,15 @@
+<div>
+    <h3>{{chartTitle}}</h3>
+    <div>
+        篩選條件：{{filterString}}
+    </div>
+    <div style="display: block">
+        <canvas baseChart width="600" height="400"
+                [data]="pieChartData"
+                [labels]="pieChartLabels"
+                [chartType]="pieChartType"
+                (chartHover)="chartHovered($event)"
+                (chartClick)="chartClicked($event)">
+        </canvas>
+    </div>
+</div>

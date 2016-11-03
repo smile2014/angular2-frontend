@@ -6,7 +6,7 @@ import { SelectItem } from 'primeng/primeng';
 import { BasicInformation } from '../util/excel-options';
 import { Global } from '../util/global';
 import { CommonCheck } from "../util/common-check";
-import { SelectOption } from "../util/common.vo";
+import { SelectOption } from "../util/excel-options";
 
 import '../../../public/css/excel-options.css';
 import '../../../public/css/menu.css';
@@ -26,9 +26,7 @@ export class MainMenuListComponent implements OnInit {
     function: string = '';
 
     showCharts: string[] = [];
-    selectColumn: string[] = [];
-    newColumn: string = '';
-    delColumn: string = '';
+    selectFilter = {};
     allTable: string[] = [];
 
     //button for choose charts
@@ -37,6 +35,9 @@ export class MainMenuListComponent implements OnInit {
     barChart: boolean = false;
     doughnutChart: boolean = false;
     lineChart: boolean = false;
+    radarChart: boolean = false;
+    pieChart: boolean = false;
+    polarAreaChart: boolean = false;
 
     projectName: string = '條件';
     basicInformation = BasicInformation;
@@ -53,8 +54,11 @@ export class MainMenuListComponent implements OnInit {
 
         this.types = [];
         this.types.push({ label: '柱狀圖', value: 'BarChart' });
-        this.types.push({ label: '圓餅圖', value: 'DoughnutChart' });
+        this.types.push({ label: '環形圖', value: 'DoughnutChart' });
         this.types.push({ label: '曲線圖', value: 'LineChart' });
+        this.types.push({ label: '雷達圖', value: 'RadarChart' });
+        this.types.push({ label: '圓餅圖', value: 'PieChart' });
+        this.types.push({ label: '極面圖', value: 'PolarAreaChart' });
         // console.log('routes:');
         // console.log(this.routes);
         // this.routes = this.routes.filter((v: any) => v.path !== '**');
@@ -89,9 +93,10 @@ export class MainMenuListComponent implements OnInit {
     }
 
     onMenuListSelected(option: any) {
-        console.log('Selected:' + option);
+        // console.log('Selected:' + option);
         this.function = option;
-        console.log('Show Charts:' + this.showCharts);
+        // console.log('Show Charts:' + this.showCharts);
+        console.log(this.selectFilter);
         // console.log(BasicInformation);
         // for (var column in BasicInformation) {
         //     console.log(column + ":");
@@ -104,72 +109,61 @@ export class MainMenuListComponent implements OnInit {
     createSelectOption(column: any): any[] {
         let selectOption: SelectOption[] = [];
         for (var selectValue in BasicInformation[column]) {
-            selectOption.push({ label: BasicInformation[column][selectValue], value: column + ':' + BasicInformation[column][selectValue] });
+            selectOption.push({ label: BasicInformation[column][selectValue], value: selectValue });
         }
         return selectOption;
     }
 
     onMultipleSelected(option: any, column: any) {
-        console.log('Multiple Selected: ' + column);
-        // console.log(table);
-        // console.log(option);
-        // console.log(BasicInformation[table.value]);
-        this.newColumn = column;
-        this.addShowCharts();
+        console.log("Select: " + option.value + ":" + option.label);
+
+        if (!this.selectFilter.hasOwnProperty(column)) this.selectFilter[column] = {};
+        this.selectFilter[column][option.value] = option.label;
+        this.updateShowCharts();
     }
 
     onMultipleDeselected(option: any, column: any) {
-        console.log('Multiple Deselected:' + column);
-        // console.log(table);
-        // console.log(option);
-        // console.log(BasicInformation[table.value]);
-        this.delColumn = column;
-        this.delShowCharts();
+        console.log("Deselect: " + option.value + ":" + option.label);
+
+        delete this.selectFilter[column][option.value];
+        this.updateShowCharts();
     }
 
     onSelectedChart(option: any) {
         console.log('Selected Chart:' + option);
-        if (option === 'BarChart') {
-            this.barChart = true;
-            this.doughnutChart = false;
-            this.lineChart = false;
-        }
-        if (option === 'DoughnutChart') {
-            this.barChart = false;
-            this.doughnutChart = true;
-            this.lineChart = false;
-        }
-        if (option === 'LineChart') {
-            this.barChart = false;
-            this.doughnutChart = false;
-            this.lineChart = true;
-        }
-    }
+        this.barChart = false;
+        this.doughnutChart = false;
+        this.lineChart = false;
+        this.radarChart = false;
+        this.pieChart = false;
+        this.polarAreaChart = false;
 
-    addShowCharts() {
-        this.selectColumn.push(this.newColumn);
-        this.updateShowCharts();
-    }
-
-    delShowCharts() {
-        this.selectColumn.splice(this.selectColumn.indexOf(this.delColumn), 1);
-        this.showCharts.splice(this.showCharts.indexOf(this.delColumn), 1);
-        this.updateShowCharts();
+        if (option === 'BarChart') this.barChart = true;
+        if (option === 'DoughnutChart') this.doughnutChart = true;
+        if (option === 'LineChart') this.lineChart = true;
+        if (option === 'RadarChart') this.radarChart = true;
+        if (option === 'PieChart') this.pieChart = true;
+        if (option === 'PolarAreaChart') this.polarAreaChart = true;
     }
 
     updateShowCharts() {
-        var ifAddColumn: boolean = true;
-        for (var addColumn of this.selectColumn) {
-            for (var existColumn of this.showCharts) {
-                if (addColumn === existColumn) {
-                    ifAddColumn = false;
-                    break;
-                }
-                ifAddColumn = true;
-            }
-            if (ifAddColumn) {
-                this.showCharts.push(addColumn);
+        this.showCharts = [];
+        for (var column in this.selectFilter) {
+            // console.log(column + ' size: ' + this.objectSize(this.selectFilter[column]));
+            if (this.objectSize(this.selectFilter[column]) === 0) {
+                delete this.selectFilter[column];
+            } else {
+                this.showCharts.push(column);
             }
         }
+    }
+
+    objectSize(object: any) {
+        // console.log(object);
+        var size = 0;
+        for (var key in object) {
+            size++;
+        }
+        return size;
     }
 }

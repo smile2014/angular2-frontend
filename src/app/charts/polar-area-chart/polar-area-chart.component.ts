@@ -3,11 +3,11 @@ import { Component, Input, OnInit } from '@angular/core';
 import { BasicInformation } from '../../util/excel-options';
 
 @Component({
-    selector: 'doughnut-chart',
-    templateUrl: './doughnut-chart.component.html',
-    styleUrls: ['./doughnut-chart.component.css']
+    selector: 'polar-area-chart',
+    templateUrl: './polar-area-chart.component.html',
+    styleUrls: ['./polar-area-chart.component.css']
 })
-export class DoughnutChartComponent implements OnInit {
+export class PolarAreaChartComponent implements OnInit {
     @Input()
     chartTitle: string;
     @Input()
@@ -15,25 +15,27 @@ export class DoughnutChartComponent implements OnInit {
 
     filterString: string = '';
 
-    // Doughnut
-    public doughnutChartLabels: string[] = [];
-    public doughnutChartData: number[] = [];
-    public doughnutChartType: string = 'doughnut';
+    // PolarArea
+    public polarAreaChartLabels: string[] = [];
+    public polarAreaChartData: number[] = [];
+    public polarAreaLegend: boolean = true;
+
+    public polarAreaChartType: string = 'polarArea';
 
     // events
     public chartClicked(e: any): void {
-        // console.log(e);
+        console.log(e);
     }
 
     public chartHovered(e: any): void {
-        // console.log(e);
+        console.log(e);
     }
 
     ngOnInit() {
         console.log(this.filter);
         for (var label in BasicInformation[this.chartTitle]) {
-            this.doughnutChartLabels.push(BasicInformation[this.chartTitle][label]);
-            this.doughnutChartData.push(Math.floor(Math.random() * 100 + 1));
+            this.polarAreaChartLabels.push(BasicInformation[this.chartTitle][label]);
+            this.polarAreaChartData.push(Math.floor(Math.random() * 100 + 1));
         }
         for (var column in this.filter) {
             if (column != this.chartTitle) {

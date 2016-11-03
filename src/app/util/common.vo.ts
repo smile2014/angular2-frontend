@@ -27,8 +27,3 @@ export class MenuList {
         return this.menuList;
     }
 }
-
-export interface SelectOption {
-    label: string;
-    value: string;
-}

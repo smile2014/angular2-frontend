@@ -54,9 +54,12 @@
 			<p-selectButton [options]="types" [(ngModel)]="selectedType" (click)="onSelectedChart(selectedType)"></p-selectButton>
 			<!--<p>Selected Type: {{selectedType}}</p>-->
 		</div>
-		<div style="float:left;clear:both;" *ngIf="barChart"><div *ngFor="let chart of showCharts"><bar-chart [chartTitle] = "chart"></bar-chart></div></div>
-		<div style="float:left;clear:both;" *ngIf="doughnutChart"><div *ngFor="let chart of showCharts"><doughnut-chart [chartTitle] = "chart"></doughnut-chart></div></div>
-		<div style="float:left;clear:both;" *ngIf="lineChart"><div *ngFor="let chart of showCharts"><line-chart [chartTitle] = "chart"></line-chart></div></div>
+		<div style="float:left;clear:both;" *ngIf="barChart"><div *ngFor="let chart of showCharts"><bar-chart [chartTitle] = "chart" [filter] = "selectFilter"></bar-chart></div></div>
+		<div style="float:left;clear:both;" *ngIf="doughnutChart"><div *ngFor="let chart of showCharts"><doughnut-chart [chartTitle] = "chart" [filter] = "selectFilter"></doughnut-chart></div></div>
+		<div style="float:left;clear:both;" *ngIf="lineChart"><div *ngFor="let chart of showCharts"><line-chart [chartTitle] = "chart" [filter] = "selectFilter"></line-chart></div></div>
+		<div style="float:left;clear:both;" *ngIf="radarChart"><div *ngFor="let chart of showCharts"><radar-chart [chartTitle] = "chart" [filter] = "selectFilter"></radar-chart></div></div>
+		<div style="float:left;clear:both;" *ngIf="pieChart"><div *ngFor="let chart of showCharts"><pie-chart [chartTitle] = "chart" [filter] = "selectFilter"></pie-chart></div></div>
+		<div style="float:left;clear:both;" *ngIf="polarAreaChart"><div *ngFor="let chart of showCharts"><polar-area-chart [chartTitle] = "chart" [filter] = "selectFilter"></polar-area-chart></div></div>
 		<hr>
 	</div>
 </div>

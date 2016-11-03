@@ -1,25 +1,28 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+
+import { BasicInformation } from '../../util/excel-options';
 
 @Component({
     selector: 'bar-chart',
-    templateUrl: './bar-chart.component.html'
+    templateUrl: './bar-chart.component.html',
+    styleUrls: ['./bar-chart.component.css']
 })
-export class BarChartComponent {
+export class BarChartComponent implements OnInit {
     @Input()
     chartTitle: string;
+    @Input()
+    filter: any;
+
+    filterString: string = '';
 
     public barChartOptions: any = {
         scaleShowVerticalLines: false,
         responsive: true
     };
-    public barChartLabels: string[] = ['2006', '2007', '2008', '2009', '2010', '2011', '2012'];
+    public barChartLabels: string[] = ['人數'];
+    public barChartData: any[] = [];
     public barChartType: string = 'bar';
     public barChartLegend: boolean = true;
-
-    public barChartData: any[] = [
-        { data: [65, 59, 80, 81, 56, 55, 40], label: 'Series A' },
-        { data: [28, 48, 40, 19, 86, 27, 90], label: 'Series B' }
-    ];
 
     // events
     public chartClicked(e: any): void {
@@ -49,5 +52,20 @@ export class BarChartComponent {
          * so one way around it, is to clone the data, change it and then
          * assign it;
          */
+    }
+
+    ngOnInit() {
+        console.log(this.filter);
+        for (var label in BasicInformation[this.chartTitle]) {
+            this.barChartData.push({ data: [Math.floor(Math.random() * 100 + 1)], label: BasicInformation[this.chartTitle][label] });
+        }
+        for (var column in this.filter) {
+            if (column != this.chartTitle) {
+                this.filterString = this.filterString + " " + column + ":";
+                for (var value in this.filter[column]) {
+                    this.filterString = this.filterString + this.filter[column][value] + ','
+                }
+            }
+        }
     }
 }

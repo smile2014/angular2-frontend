@@ -1,11 +1,13 @@
 <div>
   <h3>{{chartTitle}}</h3>
+  <div>
+    篩選條件：{{filterString}}
+  </div>
   <div style="display: block;">
     <canvas baseChart width="600" height="400"
       [datasets]="lineChartData"
       [labels]="lineChartLabels"
       [options]="lineChartOptions"
-      [colors]="lineChartColors"
       [legend]="lineChartLegend"
       [chartType]="lineChartType"
       (chartHover)="chartHovered($event)"

@@ -3,11 +3,11 @@ import { Component, Input, OnInit } from '@angular/core';
 import { BasicInformation } from '../../util/excel-options';
 
 @Component({
-    selector: 'doughnut-chart',
-    templateUrl: './doughnut-chart.component.html',
-    styleUrls: ['./doughnut-chart.component.css']
+    selector: 'pie-chart',
+    templateUrl: './pie-chart.component.html',
+    styleUrls:['./pie-chart.component.css']
 })
-export class DoughnutChartComponent implements OnInit {
+export class PieChartComponent implements OnInit {
     @Input()
     chartTitle: string;
     @Input()
@@ -15,25 +15,26 @@ export class DoughnutChartComponent implements OnInit {
 
     filterString: string = '';
 
-    // Doughnut
-    public doughnutChartLabels: string[] = [];
-    public doughnutChartData: number[] = [];
-    public doughnutChartType: string = 'doughnut';
+    // Pie
+    public pieChartLabels: string[] = [];
+    public pieChartData: number[] = [];
+    public pieChartType: string = 'pie';
 
     // events
     public chartClicked(e: any): void {
-        // console.log(e);
+        console.log(e);
     }
 
     public chartHovered(e: any): void {
-        // console.log(e);
+        console.log(e);
     }
 
     ngOnInit() {
         console.log(this.filter);
+        var data: any[] = [];
         for (var label in BasicInformation[this.chartTitle]) {
-            this.doughnutChartLabels.push(BasicInformation[this.chartTitle][label]);
-            this.doughnutChartData.push(Math.floor(Math.random() * 100 + 1));
+            this.pieChartLabels.push(BasicInformation[this.chartTitle][label]);
+            this.pieChartData.push(Math.floor(Math.random() * 100 + 1));
         }
         for (var column in this.filter) {
             if (column != this.chartTitle) {
