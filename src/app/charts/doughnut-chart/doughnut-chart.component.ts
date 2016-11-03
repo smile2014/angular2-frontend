@@ -30,7 +30,7 @@ export class DoughnutChartComponent implements OnInit {
     }
 
     ngOnInit() {
-        console.log(this.filter);
+        // console.log(this.filter);
         for (var label in BasicInformation[this.chartTitle]) {
             this.doughnutChartLabels.push(BasicInformation[this.chartTitle][label]);
             this.doughnutChartData.push(Math.floor(Math.random() * 100 + 1));

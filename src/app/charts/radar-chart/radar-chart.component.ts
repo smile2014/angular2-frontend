@@ -22,15 +22,15 @@ export class RadarChartComponent implements OnInit{
 
     // events
     public chartClicked(e: any): void {
-        console.log(e);
+        // console.log(e);
     }
 
     public chartHovered(e: any): void {
-        console.log(e);
+        // console.log(e);
     }
 
     ngOnInit() {
-        console.log(this.filter);
+        // console.log(this.filter);
         var data: any[] = [];
         for (var label in BasicInformation[this.chartTitle]) {
             data.push(Math.floor(Math.random() * 100 + 1));

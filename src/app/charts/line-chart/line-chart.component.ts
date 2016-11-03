@@ -74,7 +74,7 @@ export class LineChartComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.filter);
+    // console.log(this.filter);
     var data: any[] = [];
     for (var label in BasicInformation[this.chartTitle]) {
       data.push(Math.floor(Math.random() * 100 + 1));

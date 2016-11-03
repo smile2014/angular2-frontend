@@ -27,6 +27,7 @@ export class MainMenuListComponent implements OnInit {
 
     showCharts: string[] = [];
     selectFilter = {};
+    selectFilterString: string = '';
     allTable: string[] = [];
 
     //button for choose charts
@@ -154,6 +155,13 @@ export class MainMenuListComponent implements OnInit {
                 delete this.selectFilter[column];
             } else {
                 this.showCharts.push(column);
+            }
+        }
+        this.selectFilterString = '';
+        for (var column in this.selectFilter) {
+            this.selectFilterString = this.selectFilterString + " " + column + ": ";
+            for (var value in this.selectFilter[column]) {
+                this.selectFilterString = this.selectFilterString + this.selectFilter[column][value] + ','
             }
         }
     }

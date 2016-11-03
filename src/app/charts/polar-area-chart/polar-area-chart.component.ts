@@ -24,15 +24,15 @@ export class PolarAreaChartComponent implements OnInit {
 
     // events
     public chartClicked(e: any): void {
-        console.log(e);
+        // console.log(e);
     }
 
     public chartHovered(e: any): void {
-        console.log(e);
+        // console.log(e);
     }
 
     ngOnInit() {
-        console.log(this.filter);
+        // console.log(this.filter);
         for (var label in BasicInformation[this.chartTitle]) {
             this.polarAreaChartLabels.push(BasicInformation[this.chartTitle][label]);
             this.polarAreaChartData.push(Math.floor(Math.random() * 100 + 1));

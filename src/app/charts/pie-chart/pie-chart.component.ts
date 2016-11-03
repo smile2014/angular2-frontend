@@ -22,15 +22,15 @@ export class PieChartComponent implements OnInit {
 
     // events
     public chartClicked(e: any): void {
-        console.log(e);
+        // console.log(e);
     }
 
     public chartHovered(e: any): void {
-        console.log(e);
+        // console.log(e);
     }
 
     ngOnInit() {
-        console.log(this.filter);
+        // console.log(this.filter);
         var data: any[] = [];
         for (var label in BasicInformation[this.chartTitle]) {
             this.pieChartLabels.push(BasicInformation[this.chartTitle][label]);
