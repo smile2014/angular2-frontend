@@ -17,7 +17,8 @@ export class CommonCheckComponent implements OnInit {
 
     ngOnInit() {
         console.log('common check init');
-        setTimeout(() => { this.childModal.show() }, 1000);
+        // this.childModal.show();
+        setTimeout(() => { this.childModal.show() }, 500);
     }
 
     public hideChildModal(): void {

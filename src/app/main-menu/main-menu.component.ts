@@ -16,12 +16,12 @@ import '../../../public/css/menu-logo.css';
 })
 export class MainMenuComponent implements OnInit {
     // constructor(private commonComponentCheck: CommonCheckComponent) { }
-    loginStatus: boolean = false;
+    loginCheck: boolean = false;
 
     ngOnInit() {
         // this.commonComponentCheck.isLogin('Common Check');
-        this.loginStatus = Global.LoginStatus;
-        console.log("Login Status: " + this.loginStatus);
+        this.loginCheck = Global.LoginCheck;
+        console.log("Login Check: " + this.loginCheck);
     }
 
     studentMenuList() {

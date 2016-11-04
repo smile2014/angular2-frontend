@@ -11,11 +11,11 @@ export class LoginComponent implements OnInit {
   // loginStatus: boolean = global.LoginStatus;
 
   ngOnInit() {
-    Global.LoginStatus = false;
-    console.log("Login Status: " + Global.LoginStatus);
+    Global.LoginCheck = false;
+    console.log("Login Check: " + Global.LoginCheck);
   }
 
   loginCheck() {
-    Global.LoginStatus = true;
+    Global.LoginCheck = true;
   }
 }
