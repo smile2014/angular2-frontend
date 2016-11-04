@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 
+import '../../../public/css/menu.css';
+
 @Component({
     selector: 'user-menu',
     templateUrl: './user-menu.component.html',
