@@ -1,7 +1,7 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
-@Pipe({ name: 'keys' })
-export class KeysPipe implements PipeTransform {
+@Pipe({ name: 'json2StringAl' })
+export class Json2StrAlPipe implements PipeTransform {
     transform(value: any, args: string[]): any {
         let keys: string[] = [];
         for (var key in value) {

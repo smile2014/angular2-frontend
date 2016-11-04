@@ -24,7 +24,7 @@ import { I18nService } from './util/i18n.service';
 import { MenuList } from './util/common.vo';
 import { CommonCheck } from './util/common-check';
 import { CommonCheckComponent } from './common-check-component/common-check-component';
-import { KeysPipe } from './util/pipe';
+import { Json2StrAlPipe } from './pipe/pipe';
 
 //bootstrap lib
 import { DropdownModule } from 'ng2-bootstrap/ng2-bootstrap';
@@ -88,7 +88,7 @@ import { PolarAreaChartComponent } from './charts/polar-area-chart/polar-area-ch
     MainMenuListComponent,
     UserMenuComponent,
     CommonCheckComponent,
-    KeysPipe,
+    Json2StrAlPipe,
 
     //Charts
     LineChartComponent,
