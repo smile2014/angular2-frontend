@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-
+import { Component, OnInit, Input } from '@angular/core';
 
 import { Global } from '../util/global';
 import { CommonCheckComponent } from "../common-check-component/common-check-component";
+
+import global = require('../util/global');
 
 import '../../../public/css/styles.css';
 import '../../../public/css/menu.css';
@@ -14,11 +15,13 @@ import '../../../public/css/menu-logo.css';
     styleUrls: ['./main-menu.component.css']
 })
 export class MainMenuComponent implements OnInit {
-
     // constructor(private commonComponentCheck: CommonCheckComponent) { }
+    loginStatus: boolean = false;
 
     ngOnInit() {
         // this.commonComponentCheck.isLogin('Common Check');
+        this.loginStatus = Global.LoginStatus;
+        console.log("Login Status: " + this.loginStatus);
     }
 
     studentMenuList() {

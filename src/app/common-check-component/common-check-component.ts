@@ -17,10 +17,14 @@ export class CommonCheckComponent implements OnInit {
 
     ngOnInit() {
         console.log('common check init');
-        setTimeout(() => { this.childModal.show()}, 5000);
+        setTimeout(() => { this.childModal.show() }, 1000);
     }
 
-    public hideChildModal():void {
-    this.childModal.hide();
-  }
+    public hideChildModal(): void {
+        this.childModal.hide();
+    }
+
+    checkLogin() {
+        this.childModal.hide();
+    }
 }

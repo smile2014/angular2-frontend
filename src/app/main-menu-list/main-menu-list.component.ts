@@ -18,8 +18,9 @@ import '../../../public/css/menu.css';
 })
 export class MainMenuListComponent implements OnInit {
 
-    public isShown: boolean = false;
+    loginStatus: boolean = false;
 
+    public isShown: boolean = false;
     private document: any;
 
     //test for main-menu
@@ -71,6 +72,9 @@ export class MainMenuListComponent implements OnInit {
     }
 
     ngOnInit() {
+        this.loginStatus = Global.LoginStatus;
+        console.log("Login Status: " + this.loginStatus);
+
         this.allTable.push("BasicInformation");
     }
 
