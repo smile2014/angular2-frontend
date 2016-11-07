@@ -1,6 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
-@Pipe({ name: 'json2StringAl' })
+@Pipe({ name: 'json2StrAl' })
 export class Json2StrAlPipe implements PipeTransform {
     transform(value: any, args: string[]): any {
         let keys: string[] = [];

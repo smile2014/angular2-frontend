@@ -2,8 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 
 import { Global } from '../util/global';
 import { CommonCheckComponent } from "../common-check-component/common-check-component";
-
-import global = require('../util/global');
+import { CookieService } from "../util/cookie-service.provider";
 
 import '../../../public/css/styles.css';
 import '../../../public/css/menu.css';
@@ -16,21 +15,19 @@ import '../../../public/css/menu-logo.css';
 })
 export class MainMenuComponent implements OnInit {
     // constructor(private commonComponentCheck: CommonCheckComponent) { }
-    loginCheck: boolean = false;
+    commonCheck: any = { loginCheck: true };
 
     ngOnInit() {
         // this.commonComponentCheck.isLogin('Common Check');
-        this.loginCheck = Global.LoginCheck;
-        console.log("Login Check: " + this.loginCheck);
     }
 
     studentMenuList() {
-        console.log('studentMenuList');
+        // console.log('studentMenuList');
         Global.identity = '學生';
         Global.menuList = ['修課', '退學', '活動', '社團', '獎助'];
     }
     teacherMenuList() {
-        console.log('teacherMenuList');
+        // console.log('teacherMenuList');
         Global.identity = '教師';
         Global.menuList = ['課程', '評分', '行程', '計畫', '薪資'];
     }

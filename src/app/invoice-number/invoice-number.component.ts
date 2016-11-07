@@ -6,7 +6,7 @@ import { InvoiceNumberResp } from '../util/resp.vo';
 import { InvoiceNumberPost } from '../util/post.vo';
 import { Constants } from '../util/constants';
 import { i18n } from '../util/language';
-import { I18nService } from "../util/i18n.service";
+import { I18nService } from "../util/i18n-service.provider";
 import { InvoiceTable } from './invoice-table.component';
 
 import '../../../public/css/menu.css';

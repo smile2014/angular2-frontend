@@ -29,5 +29,8 @@ export const Constants = {
             value: 'en',
             label: 'English'
         }
-    ]
+    ],
+
+    loginCheck: 'LoginToken',
+    loginToken: 'qpwoeiruty!'
 };

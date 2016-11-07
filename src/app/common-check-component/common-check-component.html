@@ -1,20 +1,23 @@
 <!--<button type="button" class="btn btn-primary" (click)="showChildModal()">Open child modal</button>-->
 
-<div bsModal #childModal="bs-modal" class="modal fade" [config]="{backdrop: 'static'}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-	<div class="modal-dialog modal-sm">
-		<div class="modal-content">
-			<div class="modal-header">
-				<!--<button type="button" class="close" aria-label="Close" (click)="hideChildModal()">
-          <span aria-hidden="true">&times;</span>
-        </button>-->
-				<h4 class="modal-title">Login Information</h4>
-			</div>
-			<div class="modal-body">
-				Login Check.
-			</div>
-			<div style="text-align:center;">
-				<button type="button" class="btn btn-primary" (click)="checkLogin()">確認</button>
-				<button type="button" class="btn btn-danger" routerLink='/login' routerLinkActive='active'>取消</button>
+<div *ngIf="loginCheck">
+	<div bsModal #childModal="bs-modal" class="modal fade" [config]="{backdrop: 'static'}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-sm">
+			<div class="modal-content">
+				<div class="modal-header">
+					<!--<button type="button" class="close" aria-label="Close" (click)="hideChildModal()">
+			<span aria-hidden="true">&times;</span>
+			</button>-->
+					<h4 class="modal-title">尚未登入</h4>
+				</div>
+				<div class="modal-body">
+					請重新登入.
+				</div>
+				<div style="text-align:center;">
+					<!--<button type="button" class="btn btn-primary" (click)="hideChildModal()">確認</button>-->
+					<button type="button" class="btn btn-primary" routerLink='/login' routerLinkActive='active'>確認</button>
+					<!--<button type="button" class="btn btn-danger" routerLink='/login' routerLinkActive='active'>取消</button>-->
+				</div>
 			</div>
 		</div>
 	</div>

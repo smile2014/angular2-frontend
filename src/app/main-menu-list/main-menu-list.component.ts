@@ -17,8 +17,7 @@ import '../../../public/css/menu.css';
     styleUrls: ['./main-menu-list.component.css']
 })
 export class MainMenuListComponent implements OnInit {
-
-    loginCheck: boolean = false;
+    commonCheck: any = { loginCheck: true };
 
     public isShown: boolean = false;
     private document: any;
@@ -31,10 +30,12 @@ export class MainMenuListComponent implements OnInit {
     selectFilterString: string = '';
     allTable: string[] = [];
 
+    //cookies
+
     //button for choose charts
     types: SelectItem[];
     selectedType: string;
-    barChart: boolean = false;
+    barChart: boolean = true;
     doughnutChart: boolean = false;
     lineChart: boolean = false;
     radarChart: boolean = false;
@@ -50,7 +51,7 @@ export class MainMenuListComponent implements OnInit {
     menuList: string[] = Global.menuList;
     identity: string = Global.identity;
 
-    public constructor(private renderer: Renderer, private router: Router, private commonCheck: CommonCheck) {
+    public constructor(private renderer: Renderer, private router: Router) {
         this.renderer = renderer;
         this.document = document;
 
@@ -72,10 +73,8 @@ export class MainMenuListComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.loginCheck = Global.LoginCheck;
-        console.log("Login Check: " + this.loginCheck);
-
         this.allTable.push("BasicInformation");
+        this.selectedType = 'BarChart';
     }
 
     public ngAfterViewInit(): any {
@@ -98,10 +97,10 @@ export class MainMenuListComponent implements OnInit {
     }
 
     onMenuListSelected(option: any) {
-        // console.log('Selected:' + option);
+        console.log('Selected: ' + option);
         this.function = option;
         // console.log('Show Charts:' + this.showCharts);
-        console.log(this.selectFilter);
+        // console.log(this.selectFilter);
         // console.log(BasicInformation);
         // for (var column in BasicInformation) {
         //     console.log(column + ":");
@@ -122,7 +121,9 @@ export class MainMenuListComponent implements OnInit {
     onMultipleSelected(option: any, column: any) {
         console.log("Select: " + option.value + ":" + option.label);
 
-        if (!this.selectFilter.hasOwnProperty(column)) this.selectFilter[column] = {};
+        if (!this.selectFilter.hasOwnProperty(column)) {
+            this.selectFilter[column] = {};
+        }
         this.selectFilter[column][option.value] = option.label;
         this.updateShowCharts();
     }
@@ -131,6 +132,9 @@ export class MainMenuListComponent implements OnInit {
         console.log("Deselect: " + option.value + ":" + option.label);
 
         delete this.selectFilter[column][option.value];
+        if (this.objectSize(this.selectFilter[column]) === 0) {
+            delete this.selectFilter[column];
+        }
         this.updateShowCharts();
     }
 
@@ -154,12 +158,7 @@ export class MainMenuListComponent implements OnInit {
     updateShowCharts() {
         this.showCharts = [];
         for (var column in this.selectFilter) {
-            // console.log(column + ' size: ' + this.objectSize(this.selectFilter[column]));
-            if (this.objectSize(this.selectFilter[column]) === 0) {
-                delete this.selectFilter[column];
-            } else {
-                this.showCharts.push(column);
-            }
+            this.showCharts.push(column);
         }
         this.selectFilterString = '';
         for (var column in this.selectFilter) {
@@ -170,7 +169,7 @@ export class MainMenuListComponent implements OnInit {
         }
     }
 
-    objectSize(object: any) {
+    objectSize(object: any): number {
         // console.log(object);
         var size = 0;
         for (var key in object) {

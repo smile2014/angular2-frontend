@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 
-import { I18nService } from "../util/i18n.service";
+import { I18nService } from "../util/i18n-service.provider";
 
 import { TableColumn } from '../util/common.vo';
 import { InvoiceNumberResp } from '../util/resp.vo';

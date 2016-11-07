@@ -20,11 +20,12 @@ import { UserMenuComponent } from './user-menu/user-menu.component';
 
 //util
 import { ApiService } from './util/api-service.provider';
-import { I18nService } from './util/i18n.service';
+import { I18nService } from './util/i18n-service.provider';
 import { MenuList } from './util/common.vo';
 import { CommonCheck } from './util/common-check';
 import { CommonCheckComponent } from './common-check-component/common-check-component';
 import { Json2StrAlPipe } from './pipe/pipe';
+import { CookieService } from './util/cookie-service.provider';
 
 //bootstrap lib
 import { DropdownModule } from 'ng2-bootstrap/ng2-bootstrap';
@@ -103,7 +104,8 @@ import { PolarAreaChartComponent } from './charts/polar-area-chart/polar-area-ch
     [{ provide: LocationStrategy, useClass: HashLocationStrategy }],
     I18nService,
     MenuList,
-    CommonCheck
+    CommonCheck,
+    CookieService
   ],
   bootstrap: [
     AppComponent

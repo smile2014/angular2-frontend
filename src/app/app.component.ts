@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { I18nService } from "./util/i18n.service";
+import { I18nService } from "./util/i18n-service.provider";
 
 import { language, i18n } from './util/language';
 

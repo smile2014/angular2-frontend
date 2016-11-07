@@ -1,4 +1,4 @@
-import { I18nService } from "./i18n.service";
+import { I18nService } from "./i18n-service.provider";
 
 export var i18n: I18nService = new I18nService();
 

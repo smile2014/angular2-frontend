@@ -7,7 +7,7 @@ import { InvoiceNotificationThresholdResp } from '../util/resp.vo';
 import { InvoiceNotificationThresholdPost } from '../util/post.vo';
 import { Constants } from '../util/constants';
 import { i18n } from '../util/language';
-import { I18nService } from "../util/i18n.service";
+import { I18nService } from "../util/i18n-service.provider";
 
 @Component({
     selector: 'app-notification',

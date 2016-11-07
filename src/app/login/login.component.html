@@ -15,10 +15,10 @@
 						<form role="form">
 							<fieldset>
 								<div class="form-group">
-									<input class="form-control user-account" placeholder="account" name="account" type="text" autofocus>
+									<input class="form-control user-account" placeholder="Account" name="account" type="text" autofocus [(ngModel)]="account">
 								</div>
 								<div class="form-group">
-									<input class="form-control user-password" placeholder="Password" name="password" type="password" value="">
+									<input class="form-control user-password" placeholder="Password" name="password" type="password" value="" [(ngModel)]="password">
 								</div>
 								<div class="checkbox">
 									<label>
@@ -26,7 +26,7 @@
                                     </label>
 								</div>
 								<!-- Change this to a button or input when using this as a form -->
-								<a class="btn btn-lg btn-success btn-block login-btn" routerLink='/main-menu' routerLinkActive='active' (click)='loginCheck()'>Login</a>
+								<a class="btn btn-lg btn-success btn-block login-btn" routerLink='/main-menu' routerLinkActive='active' (click)='login()'>Login</a>
 								<!--<div class="row">
 									<div class="col-md-6">
 

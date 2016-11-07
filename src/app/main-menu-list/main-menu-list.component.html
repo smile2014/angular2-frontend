@@ -32,7 +32,7 @@
 		<h1>{{identity}}:{{function}}</h1>
 		<div *ngFor="let table of allTable">
 			<h2>{{table}}</h2>
-			<div style="width:50%;float:left;clear:both;" *ngFor="let column of basicInformation | json2StringAl">
+			<div style="width:50%;float:left;clear:both;" *ngFor="let column of basicInformation | json2StrAl">
 				<h3><i class="fa fa-bars" aria-hidden="true"></i> {{column}}</h3>
 				<ng-select
 					[options]='createSelectOption(column)'
@@ -59,4 +59,4 @@
 		<hr>
 	</div>
 </div>
-<div *ngIf="!loginCheck"><common-check></common-check></div>
+<common-check [commonCheck] = "commonCheck"></common-check>

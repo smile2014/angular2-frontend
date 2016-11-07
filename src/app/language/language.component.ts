@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { I18nService } from "../util/i18n.service";
+import { I18nService } from "../util/i18n-service.provider";
 
 import { Constants } from '../util/constants';
 
