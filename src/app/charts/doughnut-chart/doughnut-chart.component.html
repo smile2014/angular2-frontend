@@ -1,15 +1,19 @@
-<div>
-  <h3>[{{chartTitle}}]</h3>
-  <div>
-    篩選條件：{{filterString}}
-  </div>
-  <div style="display: block">
-    <canvas baseChart width="600" height="400"
-      [data]="doughnutChartData"
-      [labels]="doughnutChartLabels"
-      [chartType]="doughnutChartType"
-      (chartHover)="chartHovered($event)"
-      (chartClick)="chartClicked($event)">
-    </canvas>
-  </div>
+<div style="margin-top:15px;">
+  <p-panel>
+    <header style="font-size: 125%;padding-bottom:5px;">
+        [{{chartTitle}}]
+    </header>
+    <div>
+      篩選條件：{{filterString}}
+    </div>
+    <div style="display: block">
+      <canvas baseChart width="600" height="400"
+        [data]="doughnutChartData"
+        [labels]="doughnutChartLabels"
+        [chartType]="doughnutChartType"
+        (chartHover)="chartHovered($event)"
+        (chartClick)="chartClicked($event)">
+      </canvas>
+    </div>
+  </p-panel>
 </div>

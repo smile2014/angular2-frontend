@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, Input } from '@angular/core';
+import { Component, OnInit, ViewChild, Input, OnChanges } from '@angular/core';
 
 import { ModalDirective } from 'ng2-bootstrap/ng2-bootstrap';
 
@@ -9,29 +9,29 @@ import { Constants } from '../util/constants';
     selector: 'common-check',
     templateUrl: './common-check-component.html'
 })
-export class CommonCheckComponent implements OnInit {
+export class CommonCheckComponent implements OnInit, OnChanges {
 
     @Input()
-    commonCheck: any;
+    commonCheck: string[];
 
     private language: any;
     private userLanguage: string;
 
     loginCheck: boolean = false;
-    testCheck: boolean = false;
+    uploadCheck: boolean = false;
 
     constructor(private cookieService: CookieService) { }
 
     @ViewChild('childModal') public childModal: ModalDirective;
 
-    ngOnInit() {
-        // console.log('Common Check');
-        //check cookies
-        // this.childModal.show();
-        if (this.commonCheck.hasOwnProperty('loginCheck')) this.loginCheck = this.commonCheck.loginCheck;
-        console.log('Login Check: ' + this.loginCheck);
+    ngOnInit() { }
 
-        if (this.loginCheck) this.checkLoginCookie();
+    ngOnChanges() {
+        console.log("Common Check");
+        for (var checkType of this.commonCheck) {
+            if (checkType === "loginCheck") this.checkLoginCookie();
+            if (checkType === "uploadCheck") this.checkUpload();
+        }
     }
 
     public hideChildModal(): void {
@@ -39,9 +39,19 @@ export class CommonCheckComponent implements OnInit {
     }
 
     checkLoginCookie() {
-        // console.log("Login Cookie Value: " + this.cookieService.getCookieValue('LoginCheck'));
+        console.log('Start Login Check');
+        this.loginCheck = true;
         if (this.cookieService.getCookieValue(Constants.loginCheck) != Constants.loginToken) {
             setTimeout(() => { this.childModal.show() }, 200);
+        } else {
+            this.loginCheck = false;
         }
+    }
+
+    checkUpload() {
+        console.log('Start Upload');
+        this.uploadCheck = true;
+        setTimeout(() => { this.childModal.show() }, 200);
+        setTimeout(() => { this.childModal.hide(), this.uploadCheck = false; }, 5000);
     }
 }

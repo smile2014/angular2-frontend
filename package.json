@@ -25,17 +25,17 @@
     "@angular/router": "~3.1.0",
     "angular2-select": "^1.0.0-alpha.12",
     "bootstrap": "^3.3.7",
+    "chart.js": "^2.3.0",
     "core-js": "^2.4.1",
     "font-awesome": "^4.7.0",
     "ng2-bootstrap": "^1.1.14",
+    "ng2-charts": "1.4.0",
     "node-sass": "^3.10.1",
     "primeng": "^1.0.0-beta.19",
     "raw-loader": "^0.5.1",
     "rxjs": "5.0.0-beta.12",
     "sass-loader": "^4.0.2",
-    "zone.js": "^0.6.25",
-    "ng2-charts": "1.4.0",
-    "chart.js": "^2.3.0"
+    "zone.js": "^0.6.25"
   },
   "devDependencies": {
     "angular2-template-loader": "^0.4.0",

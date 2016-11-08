@@ -15,10 +15,11 @@ import '../../../public/css/menu-logo.css';
 })
 export class MainMenuComponent implements OnInit {
     // constructor(private commonComponentCheck: CommonCheckComponent) { }
-    commonCheck: any = { loginCheck: true };
+    commonCheck: string[] = [];
 
     ngOnInit() {
         // this.commonComponentCheck.isLogin('Common Check');
+        this.commonCheck = ["loginCheck"];
     }
 
     studentMenuList() {
@@ -29,6 +30,6 @@ export class MainMenuComponent implements OnInit {
     teacherMenuList() {
         // console.log('teacherMenuList');
         Global.identity = '教師';
-        Global.menuList = ['課程', '評分', '行程', '計畫', '薪資'];
+        Global.menuList = ['課程', '評分', '行程', '計畫', '上傳'];
     }
 }

@@ -40,6 +40,8 @@ import { DataTableModule } from 'primeng/primeng';
 import { ButtonModule } from 'primeng/primeng';
 import { SharedModule } from 'primeng/primeng';
 import { SelectButtonModule } from 'primeng/primeng';
+import { PanelModule } from 'primeng/primeng';
+import { FieldsetModule } from 'primeng/primeng';
 
 //Charts lib
 import { ChartsModule } from 'ng2-charts/ng2-charts';
@@ -50,7 +52,6 @@ import { DoughnutChartComponent } from './charts/doughnut-chart/doughnut-chart.c
 import { RadarChartComponent } from './charts/radar-chart/radar-chart.component';
 import { PieChartComponent } from './charts/pie-chart/pie-chart.component';
 import { PolarAreaChartComponent } from './charts/polar-area-chart/polar-area-chart.component';
-
 
 @NgModule({
   imports: [
@@ -73,6 +74,8 @@ import { PolarAreaChartComponent } from './charts/polar-area-chart/polar-area-ch
     ButtonModule,
     SharedModule,
     SelectButtonModule,
+    PanelModule,
+    FieldsetModule,
 
     //Charts
     ChartsModule
@@ -104,7 +107,7 @@ import { PolarAreaChartComponent } from './charts/polar-area-chart/polar-area-ch
     [{ provide: LocationStrategy, useClass: HashLocationStrategy }],
     I18nService,
     MenuList,
-    CommonCheck,
+    CommonCheckComponent,
     CookieService
   ],
   bootstrap: [

@@ -43,9 +43,9 @@
 					(deselected)="onMultipleDeselected($event, column)">
 				</ng-select>
 			</div>
-		</div>
-		<div style="width:8%;float:left;clear:both;margin-top:10px"><p>已選擇條件:</p></div>
-		<div style="width:92%;float:right;margin-top:10px"><p>{{selectFilterString}}</p></div>
+		</div>	
+		<div style="float:left;clear:both;margin-top:10px;"><p>已選擇條件:</p></div>
+		<div style="clear:both;"><p>{{selectFilterString}}</p></div>
 		<hr>
 		<div style="float:left;clear:both;">
 			<p-selectButton [options]="types" [(ngModel)]="selectedType" (click)="onSelectedChart(selectedType)"></p-selectButton>

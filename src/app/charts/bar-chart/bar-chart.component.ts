@@ -1,5 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 
+import { FieldsetModule } from 'primeng/primeng';
+
 import { BasicInformation } from '../../util/excel-options';
 
 @Component({

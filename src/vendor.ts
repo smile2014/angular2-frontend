@@ -22,3 +22,5 @@ import 'font-awesome/css/font-awesome.min.css';
 
 //charts
 import 'chart.js';
+
+//ngSemantic

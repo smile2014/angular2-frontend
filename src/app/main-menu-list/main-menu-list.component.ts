@@ -7,6 +7,7 @@ import { BasicInformation } from '../util/excel-options';
 import { Global } from '../util/global';
 import { CommonCheck } from "../util/common-check";
 import { SelectOption } from "../util/excel-options";
+import { CommonCheckComponent } from "../common-check-component/common-check-component";
 
 import '../../../public/css/excel-options.css';
 import '../../../public/css/menu.css';
@@ -17,7 +18,7 @@ import '../../../public/css/menu.css';
     styleUrls: ['./main-menu-list.component.css']
 })
 export class MainMenuListComponent implements OnInit {
-    commonCheck: any = { loginCheck: true };
+    commonCheck: string[] = [];
 
     public isShown: boolean = false;
     private document: any;
@@ -51,7 +52,7 @@ export class MainMenuListComponent implements OnInit {
     menuList: string[] = Global.menuList;
     identity: string = Global.identity;
 
-    public constructor(private renderer: Renderer, private router: Router) {
+    public constructor(private renderer: Renderer, private router: Router, private commonCheckComponent: CommonCheckComponent) {
         this.renderer = renderer;
         this.document = document;
 
@@ -75,6 +76,8 @@ export class MainMenuListComponent implements OnInit {
     ngOnInit() {
         this.allTable.push("BasicInformation");
         this.selectedType = 'BarChart';
+
+        this.commonCheck = ["loginCheck"];
     }
 
     public ngAfterViewInit(): any {
@@ -99,6 +102,10 @@ export class MainMenuListComponent implements OnInit {
     onMenuListSelected(option: any) {
         console.log('Selected: ' + option);
         this.function = option;
+
+        if (option === '上傳') {
+            this.commonCheck = ["uploadCheck"];
+        }
         // console.log('Show Charts:' + this.showCharts);
         // console.log(this.selectFilter);
         // console.log(BasicInformation);
